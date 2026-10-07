@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Personal Lyrics & Contact Us</title>
+
+  <meta
+    name="description"
+    content="Personal Lyrics & Contact Us — a private personal portfolio for lyrics, creative projects, information, and contact."
+  >
+  <meta name="robots" content="noindex, nofollow">
+
+  <style>
+    :root {
+      --bg: #070a12;
+      --bg2: #101629;
+      --glass: rgba(255,255,255,0.07);
+      --glass-strong: rgba(255,255,255,0.11);
+      --border: rgba(255,255,255,0.15);
+      --text: #f5f8ff;
+      --muted: #aab4ca;
+      --cyan: #65e8ff;
+      --purple: #a978ff;
+      --green: #62f5b0;
+      --danger: #ff7894;
+      --shadow: 0 20px 70px rgba(0,0,0,.45);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(101,232,255,.14), transparent 30%),
+        radial-gradient(circle at 85% 25%, rgba(169,120,255,.14), transparent 30%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+      overflow-x: hidden;
+    }
+
+    /* Ambient background */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .18;
+      z-index: -1;
+      animation: float 9s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      background: var(--cyan);
+      top: 10%;
+      left: -120px;
+    }
+
+    body::after {
+      background: var(--purple);
+      right: -120px;
+      bottom: 5%;
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      from { transform: translateY(-20px) scale(1); }
+      to { transform: translateY(30px) scale(1.15); }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px;
+      backdrop-filter: blur(20px);
+      background: rgba(7,10,18,.65);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: 1150px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: 900;
+      letter-spacing: -.5px;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--glass);
+    }
+
+    /* Main */
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 35px 18px 60px;
+    }
+
+    section {
+      scroll-margin-top: 90px;
+      margin: 30px 0;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 75vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 70px 10px;
+    }
+
+    .hero-card {
+      max-width: 850px;
+      padding: 50px 25px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      backdrop-filter: blur(24px);
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(101,232,255,.35);
+      border-radius: 999px;
+      color: var(--cyan);
+      background: rgba(101,232,255,.07);
+      font-size: .85rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      line-height: .95;
+      letter-spacing: -4px;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: var(--cyan);
+      text-shadow: 0 0 35px rgba(101,232,255,.4);
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px 20px;
+      cursor: pointer;
+      color: var(--text);
+      background: var(--glass);
+      transition: .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      border-color: var(--cyan);
+      box-shadow: 0 0 25px rgba(101,232,255,.15);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #55dff7, #9a6cff);
+      color: #071018;
+      font-weight: 800;
+      border: 0;
+    }
+
+    /* Section headings */
+    .section-heading {
+      margin-bottom: 18px;
+    }
+
+    .section-heading small {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+
+    .section-heading h2 {
+      font-size: 2rem;
+      margin-top: 5px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-top: 7px;
+    }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .card {
+      padding: 22px;
+      border-radius: var(--radius);
+      background: var(--glass);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 15px 40px rgba(0,0,0,.2);
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: var(--glass-strong);
+      border-color: rgba(101,232,255,.35);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Lyrics */
+    .lyrics-card {
+      position: relative;
+    }
+
+    .lyrics-box {
+      margin-top: 15px;
+      padding: 18px;
+      border-radius: 17px;
+      background: rgba(0,0,0,.2);
+      border: 1px solid rgba(255,255,255,.08);
+      color: #dce7ff;
+      line-height: 1.9;
+      white-space: pre-line;
+    }
+
+    .lyrics-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    /* Contact */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 18px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .contact-item {
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .contact-item small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    form {
+      display: grid;
+      gap: 13px;
+    }
+
+    label {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      margin-top: 6px;
+      padding: 13px 14px;
+      color: var(--text);
+      background: rgba(0,0,0,.2);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(101,232,255,.08);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .privacy-note {
+      padding: 14px;
+      border-radius: 14px;
+      color: #c9f9e1;
+      background: rgba(98,245,176,.06);
+      border: 1px solid rgba(98,245,176,.18);
+      font-size: .85rem;
+      line-height: 1.6;
+    }
+
+    /* Privacy */
+    .privacy-box {
+      border-left: 3px solid var(--cyan);
+      padding: 20px;
+      background: var(--glass);
+      border-radius: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .privacy-box strong {
+      color: var(--text);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 18px;
+      text-align: center;
+      color: var(--muted);
+      background: rgba(0,0,0,.18);
+    }
+
+    footer strong {
+      color: var(--text);
+    }
+
+    .footer-links {
+      margin: 12px 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .8rem;
+      margin-top: 10px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+      .grid,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 3px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero {
+        min-height: 65vh;
+        padding-top: 35px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      main {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .hero-card {
+        padding: 35px 17px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER / NAVIGATION
+  ========================== -->
+  <header>
+    <nav>
+      <a href="#home" class="logo">
+        Personal <span>Lyrics</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#lyrics">Lyrics</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#privacy">Privacy</a>
+      </div>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         HOME
+    ========================== -->
+    <section id="home" class="hero">
+
+      <div class="hero-card">
+
+        <div class="badge">
+          ✦ PERSONAL PORTFOLIO
+        </div>
+
+        <h1>
+          Personal <span>Lyrics</span><br>
+          & Contact Us
+        </h1>
+
+        <p>
+          A personal space for lyrics, creative projects, favorite works,
+          ideas, and safe ways to get in touch.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#lyrics">
+            🎵 Explore Lyrics
+          </a>
+
+          <a class="btn" href="#contact">
+            ✉ Contact Us
+          </a>
+
+          <a class="btn" href="#portfolio">
+            ◈ View Portfolio
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PORTFOLIO
+    ========================== -->
+    <section id="portfolio">
+
+      <div class="section-heading">
+        <small>My Work</small>
+        <h2>Portfolio</h2>
+        <p>
+          A simple collection of personal projects and creative work.
+        </p>
+      </div>
+
+      <div class="grid">
+
+        <article class="card">
+          <div class="card-icon">🎵</div>
+          <h3>Lyrics Collection</h3>
+          <p>
+            Original lyrics, songwriting ideas, drafts, and personal
+            music projects.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">💻</div>
+          <h3>Web Projects</h3>
+          <p>
+            Personal HTML, CSS, JavaScript experiments and interface
+            designs.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🎨</div>
+          <h3>Creative Projects</h3>
+          <p>
+            Creative concepts, visual ideas, experiments, and other
+            personal creations.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">📚</div>
+          <h3>Learning</h3>
+          <p>
+            School projects, notes, discoveries, and things learned
+            over time.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🤖</div>
+          <h3>AI Projects</h3>
+          <p>
+            Personal experiments involving artificial intelligence,
+            prompts, and creative tools.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🧪</div>
+          <h3>Experiments</h3>
+          <p>
+            Small experiments and prototypes that may eventually become
+            larger projects.
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         LYRICS
+    ========================== -->
+    <section id="lyrics">
+
+      <div class="section-heading">
+        <small>Music</small>
+        <h2>Personal Lyrics</h2>
+        <p>
+          Store your own original lyrics and songwriting ideas here.
+        </p>
+      </div>
+
+      <div class="card lyrics-card">
+
+        <h3>🎼 Sample Original Lyrics</h3>
+
+        <div class="lyrics-box">
+          Sa bawat araw na bagong simula,
+          May pangarap na muling bubuo.
+          Kahit mabagal, patuloy ang hakbang,
+          Dahil may bukas na naghihintay.
+
+          <br>
+
+          Chorus:
+          Hawak ang pangarap,
+          Hindi bibitaw.
+          Sa sariling mundo,
+          Ako ang gagawa.
+        </div>
+
+        <p class="lyrics-note">
+          ⚠ Replace this sample with your own original lyrics.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+    <section id="about">
+
+      <div class="section-heading">
+        <small>About</small>
+        <h2>About This Website</h2>
+      </div>
+
+      <div class="card">
+
+        <p style="color:var(--muted); line-height:1.8;">
+          Welcome to <strong>Personal Lyrics & Contact Us</strong>.
+          This website is designed as a simple personal portfolio where
+          creative work, lyrics, projects, and contact information can
+          be organized in one place.
+        </p>
+
+        <br>
+
+        <p style="color:var(--muted); line-height:1.8;">
+          The website is intentionally designed to work as a standalone
+          HTML file. You can customize the name, links, colors, projects,
+          lyrics, and contact information.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+    <section id="contact">
+
+      <div class="section-heading">
+        <small>Get In Touch</small>
+        <h2>Contact Us</h2>
+        <p>
+          Use the information below or prepare a message using the form.
+        </p>
+      </div>
+
+      <div class="contact-layout">
+
+        <!-- Contact information -->
+        <div class="card">
+
+          <h3>📬 Contact Information</h3>
+
+          <div class="contact-list">
+
+            <div class="contact-item">
+              <small>Email</small>
+              your-email@example.com
+            </div>
+
+            <div class="contact-item">
+              <small>Location</small>
+              Philippines
+            </div>
+
+            <div class="contact-item">
+              <small>Website</small>
+              Personal Lyrics & Contact Us
+            </div>
+
+            <div class="contact-item">
+              <small>Availability</small>
+              Available for personal messages
+            </div>
+
+          </div>
+
+          <br>
+
+          <div class="privacy-note">
+            🔒 Privacy reminder:
+            Don't publish your home address, phone number, passwords,
+            school account credentials, or other sensitive information
+            on a public portfolio.
+          </div>
+
+        </div>
+
+
+        <!-- Contact form -->
+        <div class="card">
+
+          <h3>✉ Send a Message</h3>
+
+          <br>
+
+          <form id="contactForm">
+
+            <label>
+              Name
+              <input
+                type="text"
+                id="name"
+                name="name"
+                maxlength="80"
+                autocomplete="name"
+                placeholder="Your name"
+                required
+              >
+            </label>
+
+            <label>
+              Email
+              <input
+                type="email"
+                id="email"
+                name="email"
+                maxlength="120"
+                autocomplete="email"
+                placeholder="your@email.com"
+                required
+              >
+            </label>
+
+            <label>
+              Message
+              <textarea
+                id="message"
+                name="message"
+                maxlength="1000"
+                placeholder="Write your message..."
+                required
+              ></textarea>
+            </label>
+
+            <button class="btn btn-primary" type="submit">
+              ✉ Prepare Email
+            </button>
+
+            <p id="formStatus"
+               style="color:var(--muted); font-size:.85rem;">
+            </p>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRIVACY / SAFETY
+    ========================== -->
+    <section id="privacy">
+
+      <div class="section-heading">
+        <small>Safety</small>
+        <h2>Privacy & Personal Safety</h2>
+      </div>
+
+      <div class="privacy-box">
+
+        <strong>Privacy-first design</strong>
+
+        <br><br>
+
+        This personal website does not intentionally collect passwords,
+        payment information, private documents, or other sensitive
+        information.
+
+        <br><br>
+
+        <strong>Public information:</strong>
+        Only publish information that you are comfortable sharing
+        publicly.
+
+        <br><br>
+
+        <strong>Contact form:</strong>
+        This standalone version does not store submissions in a database.
+        Instead, the button prepares an email using your device's email
+        application.
+
+        <br><br>
+
+        <strong>Personal safety:</strong>
+        Avoid publishing your exact home address, private phone number,
+        school schedule, passwords, authentication codes, or other
+        information that could put you at risk.
+
+        <br><br>
+
+        <strong>Copyright:</strong>
+        Only publish lyrics and other material that you created yourself
+        or have permission to publish.
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         LINKS
+    ========================== -->
+    <section id="links">
+
+      <div class="section-heading">
+        <small>Online</small>
+        <h2>My Links</h2>
+      </div>
+
+      <div class="grid">
+
+        <a class="card" href="#" onclick="return placeholderLink('Portfolio')">
+          <div class="card-icon">🌐</div>
+          <h3>Portfolio Website</h3>
+          <p>Personal projects and selected work.</p>
+        </a>
+
+        <a class="card" href="#" onclick="return placeholderLink('Music')">
+          <div class="card-icon">🎧</div>
+          <h3>Music</h3>
+          <p>Music and songwriting projects.</p>
+        </a>
+
+        <a class="card" href="#" onclick="return placeholderLink('Social')">
+          <div class="card-icon">🔗</div>
+          <h3>Social Links</h3>
+          <p>Add only the public profiles you want to share.</p>
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer>
+
+    <strong>Personal Lyrics & Contact Us</strong>
+
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#lyrics">Lyrics</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#privacy">Privacy</a>
+    </div>
+
+    <p>
+      © <span id="year"></span> Personal Lyrics & Contact Us.
+      All rights reserved.
+    </p>
+
+    <div class="status">
+      <span class="status-dot"></span>
+      Personal website • Privacy-focused
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+  <script>
+
+    // Current year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    // Contact form
+    document.getElementById("contactForm").addEventListener(
+      "submit",
+      function(event) {
+
+        event.preventDefault();
+
+        const name =
+          document.getElementById("name").value.trim();
+
+        const email =
+          document.getElementById("email").value.trim();
+
+        const message =
+          document.getElementById("message").value.trim();
+
+        const status =
+          document.getElementById("formStatus");
+
+        if (!name || !email || !message) {
+          status.textContent =
+            "Please complete all fields.";
+
+          return;
+        }
+
+        const subject =
+          encodeURIComponent(
+            "Personal Lyrics & Contact Us — Message"
+          );
+
+        const body =
+          encodeURIComponent(
+            "Name: " + name +
+            "\nEmail: " + email +
+            "\n\nMessage:\n" + message
+          );
+
+        /*
+          Replace this email address with your own.
+          Example:
+          yourname@gmail.com
+        */
+
+        const destination =
+          "your-email@example.com";
+
+        window.location.href =
+          "mailto:" +
+          destination +
+          "?subject=" +
+          subject +
+          "&body=" +
+          body;
+
+        status.textContent =
+          "Opening your email application...";
+      }
+    );
+
+
+    // Placeholder links
+    function placeholderLink(name) {
+
+      alert(
+        name +
+        " link is not configured yet.\n\n" +
+        "Replace this card's # link with your real public URL."
+      );
+
+      return false;
+    }
+
+  </script>
+
+</body>
+</html>
